@@ -1,0 +1,31 @@
+.header {
+    background-color: #0077ff;
+    padding: 16px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.input {
+    padding: 8px;
+    width: 300px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.searchBtn {
+    padding: 8px 16px;
+    background-color: #033;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+    background-color: #005fd1; }
