@@ -1,8 +1,13 @@
 import React from 'react'
 import css from './ImageCard.module.css'
+import { UnsplashImage } from '../../types'
 
+interface Props {
+  image: UnsplashImage;
+  onClick: (image: UnsplashImage) => void;
+}
 
-const ImageCard = ({ image, onClick }) => {
+const ImageCard: React.FC<Props> = ({ image, onClick }) => {
     const { urls, alt_description } = image;
 
   const handleClick = () => {

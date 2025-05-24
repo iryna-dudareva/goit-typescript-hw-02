@@ -2,7 +2,7 @@ import './App.css'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
-
+import {UnsplashImage} from './types'
 
 import SearchBar from './components/SearchBar/SearchBar'
 import ImageGallery from './components/ImageGallery/ImageGallery'
@@ -12,16 +12,15 @@ import ImageModal from './components/ImageModal/ImageModal'
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn'
 
 
-
 const ACCESS_KEY = 'kot6MaQOJxV7GzM-FzCJJgw-MKlr9MHK--3pFwT-x8U';
 function App() {
-    const [query, setQuery] = useState('');
-  const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [totalPages, setTotalPages] = useState(0);
+    const [query, setQuery] = useState<string>('');
+  const [images, setImages] = useState < UnsplashImage[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<null>(null);
+  const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(null);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   useEffect(() => {
     if (!query) return;
@@ -49,7 +48,7 @@ function App() {
           setImages((prev) => [...prev, ...response.data.results]);
         }
         setTotalPages(response.data.total_pages);
-      } catch (error) {
+      } catch (error: any) {
         setError(error.message);
         toast.error('Failed to fetch images.');
       } finally {
@@ -60,7 +59,7 @@ function App() {
     fetchImages();
   }, [query, page]);
 
-  const handleSearchSubmit = (searchQuery) => {
+  const handleSearchSubmit = (searchQuery: string) => {
     if (searchQuery === query) return; 
     setQuery(searchQuery);
     setPage(1);
@@ -74,7 +73,7 @@ function App() {
     }
   };
 
-  const openModal = (image) => {
+  const openModal = (image: UnsplashImage) => {
     setSelectedImage(image);
   };
 

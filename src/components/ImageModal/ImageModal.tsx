@@ -1,8 +1,15 @@
-import React from 'react';
-import ReactModal from 'react-modal';
-import css from './ImageModal.module.css';
+import React from 'react'
+import ReactModal from 'react-modal'
+import css from './ImageModal.module.css'
+import { UnsplashImage } from '../../types';
 
-const ImageModal = ({ isOpen, onClose, image }) => {
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+  image: UnsplashImage | null;
+}
+
+const ImageModal: React.FC<Props> = ({ isOpen, onClose, image }) => {
   return (
     <ReactModal
       isOpen={isOpen}
